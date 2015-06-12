@@ -10,5 +10,5 @@ MODULE_SOCKETIO=node_modules/socket.io
 if [ ! -f "$MODULE_EXPRESS" ]
 then
     echo "El modulo $MODULE_EXPRESS no esta instalado..."
-	cp -f "/usr/lib/$MODULE_EXPRESS/" "$MODULE_EXPRESS"
+	cp -fR "/usr/lib/$MODULE_EXPRESS/" "$MODULE_EXPRESS"
 fi
