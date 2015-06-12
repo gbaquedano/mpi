@@ -1,0 +1,79 @@
+<script src="/socket.io/socket.io.js"></script>
+<script src="/bower_components/paper/dist/paper-full.min.js"></script>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script>
+  var socket = io.connect();
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', { my: 'data' });
+  });
+</script>
+<script type="text/paperscript" canvas="myCanvas">
+var text;
+var deltas = 0;
+var fpsInterval;
+var aguja;
+inicizalizaSistema();
+
+function inicizalizaSistema() {
+	var path = new Path.Circle({
+		center: view.center,
+		radius: 120
+	});
+	
+	path.fillColor = {
+						gradient: {
+							stops: [['gray', 0.05], ['white', 0.8], ['gray', 1]],
+							radial: true
+						},
+						origin: path.position,
+						destination: path.bounds.rightCenter
+					};
+					
+					aguja = dibujaAguja(view.center, 10, 110, 45);
+	
+	text = new PointText({
+		point: view.center - new Point(0,150),
+		justification: 'center',
+		fontSize: 30,
+		fillColor: 'red'
+	});
+	deltas = 0;
+	fpsInterval = setInterval(updateFps, 1000);
+}
+
+function dibujaAguja(centro, ancho, largo, rot){
+	var myPath = new Path();
+	myPath.strokeColor = 'black';
+	myPath.fillColor = 'red';
+	var bi = centro - new Point(ancho/2, 0);
+	var bd = centro + new Point(ancho/2, 0);
+	var td = bd - new Point(0, largo*0.7);
+	var ti = bi - new Point(0, largo*0.7);
+	var punta = centro - new Point(0, largo);
+	
+	myPath.add(bd);
+	myPath.add(td);
+	myPath.add(punta);
+	myPath.add(ti);
+	myPath.add(bi);
+	
+	myPath.rotate(rot,centro);
+
+	return myPath;
+}
+
+function updateFps(){
+	var cpy = deltas;
+	text.content = cpy + " fps";
+	deltas = 0;
+}
+
+function onFrame(event) {
+	deltas++;
+	aguja.rotate(1,view.center);
+}
+</script>
+
+<canvas width="600" height="400" class="canvas" id="myCanvas"></canvas>
