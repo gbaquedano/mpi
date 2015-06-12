@@ -7,9 +7,16 @@ MODULE_REDIS=node_modules/redis
 MODULE_IOREDIS=node_modules/ioredis
 MODULE_SOCKETIO=node_modules/socket.io
 
+MODULES=(MODULE_EXPRESS MODULE_I2C MODULE_SERVESTATIC MODULE_HIREDIS MODULE_REDIS MODULE_IOREDIS MODULE_SOCKETIO)
+
+for i in "${arr[@]}"
+do
+   echo "$i"
+   # or do whatever with individual element of the array
+done
+
 if [ ! -f "$MODULE_EXPRESS" ]
 then
     echo "El modulo $MODULE_EXPRESS no esta instalado..."
-	mkdir -p "$MODULE_EXPRESS"
-	cp -Rf "/usr/lib/$MODULE_EXPRESS/" "$MODULE_EXPRESS"
+	cp -R "/usr/lib/$MODULE_EXPRESS/" "node_modules"
 fi
