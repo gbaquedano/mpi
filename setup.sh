@@ -1,5 +1,5 @@
 #!\bin\sh
-MODULE[0]=node_modules/express
+MODULE[0]="node_modules/express"
 MODULE[1]=node_modules/i2c
 MODULE[2]=node_modules/serve-static
 MODULE[3]=node_modules/hiredis
