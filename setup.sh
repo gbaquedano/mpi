@@ -14,7 +14,7 @@ do
 	then
 		echo "El modulo $i no esta instalado..."
 		mkdir -p "$i"
-		cp -R "/usr/lib/$i/" "$i"
+		cp -R "/usr/lib/$i/" "node_modules"
 	fi
 done
 
