@@ -20,7 +20,10 @@ function inicializa(){
   var g = Gauge.Collection;
   console.log(g);
   socket.on('sensordata', function(datos){
+	Gauge.Collection.get('gaugecpu').setValue(datos.cpu);
 	Gauge.Collection.get('gaugemem').setValue(datos.mem);
+	Gauge.Collection.get('gaugevel').setValue(datos.vel);
+	Gauge.Collection.get('gaugebat').setValue(datos.bat);
   });
 }
 </script>

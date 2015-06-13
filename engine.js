@@ -62,8 +62,10 @@ function leeI2C(){
 			//console.log("Mem usage:" + pctmem + "% " + " CPU[1]:" + avgcpu[0] + " CPU[5]:" + avgcpu[1] + " CPU[15]:" + avgcpu[2]);
 			io.emit('sensordata', 
 			{ 
-				cpu: avgcpu[0],
-				mem: pctmem
+				cpu: avgcpu[0]*100,
+				mem: pctmem,
+				vel: Math.random()*100,
+				bat: Math.random()*100
 			});
 		}else{
 			console.log("Error reading:" + err);
