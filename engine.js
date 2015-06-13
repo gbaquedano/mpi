@@ -60,8 +60,9 @@ function leeI2C(){
 			console.log(res);
 			var totalmem = os.totalmem();
 			var freemem = os.freemem();
+			var usedmem = totalmem - freemem;
 			var avgcpu = os.loadavg();
-			console.log("Total mem:" + totalmem + " Free mem:" + freemem + " CPU[1]:" + avgcpu[0] + " CPU[5]:" + avgcpu[1] + " CPU[15]:" + avgcpu[2]);
+			console.log("Mem usage:" + ((usedmem/totalmem)*100) + "% " + " CPU[1]:" + avgcpu[0] + " CPU[5]:" + avgcpu[1] + " CPU[15]:" + avgcpu[2]);
 		}else{
 			console.log("Error reading:" + err);
 		}
