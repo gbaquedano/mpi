@@ -60,7 +60,7 @@ function leeI2C(){
 			var pctmem = ((usedmem/totalmem)*100);
 			var avgcpu = os.loadavg();
 			console.log("Mem usage:" + pctmem + "% " + " CPU[1]:" + avgcpu[0] + " CPU[5]:" + avgcpu[1] + " CPU[15]:" + avgcpu[2]);
-			socket.emit('sensordata', 
+			io.emit('sensordata', 
 			{ 
 				cpu: avgcpu[0],
 				mem: pctmem
