@@ -3,26 +3,39 @@
 <script src="scripts/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script>
-$(document).ready(function(){
-  var g = $("#gaugemem");
+var init = false;
+var flagsReady = [];
+var socket = io.connect();
+
+function setReady(i){
+	i.onready = null;
+	flagsReady.push(i);
+	if(flagsReady.length >= 4 && !init){
+		init = true;
+		inicializa();
+	}
+}
+
+function inicializa(){
+  var g = Gauge.Collection;
   console.log(g);
-  g.setValue(50.0f);
-  var socket = io.connect();
   socket.on('sensordata', function(datos){
-	console.log(datos);
+	Gauge.Collection.get('gaugemem').setValue(datos.mem);
   });
-});
+}
 </script>
 
 <canvas id="gaugecpu" data-type="canv-gauge" 
 		data-title="CPU"
 		data-value="0"
 		data-highlights="0 80 #62ab3d, 80 90 #ddd053, 90 100 #db5427"
+		data-onready="setReady(this);"
 	></canvas>
 <canvas id="gaugemem" data-type="canv-gauge" 
 		data-title="Mem"
 		data-value="0"
 		data-highlights="0 80 #62ab3d, 80 90 #ddd053, 90 100 #db5427"
+		data-onready="setReady(this);"
 	></canvas>
 <canvas id="gaugevel" width="400" height="400"
 		data-type="canv-gauge"
@@ -41,11 +54,12 @@ $(document).ready(function(){
 		data-colors-needle="#ce7200 #db9136"
 		data-colors-title="#00f"
 		data-highlights="0 50 #eee, 50 70 #ccc, 70 90 #aaa 90 100 #db5427"
-		data-onready=""
+		data-onready="setReady(this);"
 	></canvas>
 	
 <canvas id="gaugebat" data-type="canv-gauge" 
 		data-title="Bateria"
 		data-value="100"
 		data-highlights="0 20 #db5427, 20 40 #ddd053, 40 100 #62ab3d"
+		data-onready="setReady(this);"
 	></canvas>
