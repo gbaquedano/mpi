@@ -41,7 +41,8 @@ wire.scan(function(err, data) {
 	}
 });
 
-setInterval(leeI2C, 1000);
+setInterval(leeI2C, 3000);
+// Por un lado leer y por otro enviar a clientes
 
 function leeI2C(){
 	/*
