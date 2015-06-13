@@ -1,3 +1,6 @@
+// Redis
+var Redis = require('ioredis');
+var redis = new Redis();
 // I2C
 var i2c = require('i2c');
 var address = 0x04;
@@ -7,6 +10,11 @@ var app = require('express')();
 var serveStatic = require('serve-static')
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
+
+redis.set('foo', 'bar');
+redis.get('foo', function (err, result) {
+  console.log(result);
+});
 
 server.listen(80);
 

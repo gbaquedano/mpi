@@ -17,6 +17,8 @@ do
 	fi
 done
 
+echo "Killing previous redis servers..."
+killall redis-server
 echo "Starting redis..."
 redis-server redis.conf
 
