@@ -13,7 +13,8 @@ do
 	if [ ! -f "$i" ]
 	then
 		echo "El modulo $i no esta instalado..."
-		cp -R "/usr/lib/$i/" "node_modules"
+		mkdir -p "$i"
+		cp -R "/usr/lib/$i/" "$i"
 	fi
 done
 
