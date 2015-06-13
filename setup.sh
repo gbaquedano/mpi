@@ -9,10 +9,9 @@ MODULE[6]=node_modules/socket.io
 
 for i in "${MODULE[@]}"
 do
-   echo "$i"
 	if [ ! -f "$i" ]
 	then
-		echo "El modulo $i no esta instalado..."
+		echo "Instalando el modulo $i ..."
 		mkdir -p "$i"
 		cp -R "/usr/lib/$i/" "node_modules"
 	fi

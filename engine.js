@@ -13,7 +13,7 @@ server.listen(80);
 app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html');
 });
-app.use('/bower_components',serveStatic(__dirname + '/bower_components'))
+app.use('/scripts',serveStatic(__dirname + '/scripts'))
 app.use('/css',serveStatic(__dirname + '/css'))
 
 io.on('connection', function (socket) {
