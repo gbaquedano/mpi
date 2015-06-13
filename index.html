@@ -3,24 +3,28 @@
 <script src="scripts/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 <script>
+$(document).ready(function(){
+  var g = $("#gaugemem");
+  console.log(g);
+  g.setValue(50.0f);
   var socket = io.connect();
-  socket.on('news', function (data) {
-    console.log(data);
-    socket.emit('my other event', { my: 'data' });
+  socket.on('sensordata', function(datos){
+	console.log(datos);
   });
+});
 </script>
 
-<canvas data-type="canv-gauge" 
+<canvas id="gaugecpu" data-type="canv-gauge" 
 		data-title="CPU"
 		data-value="0"
 		data-highlights="0 80 #62ab3d, 80 90 #ddd053, 90 100 #db5427"
 	></canvas>
-	<canvas data-type="canv-gauge" 
+<canvas id="gaugemem" data-type="canv-gauge" 
 		data-title="Mem"
 		data-value="0"
 		data-highlights="0 80 #62ab3d, 80 90 #ddd053, 90 100 #db5427"
 	></canvas>
-<canvas id="gauge1" width="400" height="400"
+<canvas id="gaugevel" width="400" height="400"
 		data-type="canv-gauge"
 		data-title="Velocidad"
 		data-min-value="0"
@@ -40,7 +44,7 @@
 		data-onready=""
 	></canvas>
 	
-	<canvas data-type="canv-gauge" 
+<canvas id="gaugebat" data-type="canv-gauge" 
 		data-title="Bateria"
 		data-value="100"
 		data-highlights="0 20 #db5427, 20 40 #ddd053, 40 100 #62ab3d"

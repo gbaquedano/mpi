@@ -30,10 +30,6 @@ app.use('/img',serveStatic(__dirname + '/img'))
 
 io.on('connection', function (socket) {
   console.log("Cliente conectado");
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
-  });
 });
 
 wire.scan(function(err, data) {
@@ -61,8 +57,14 @@ function leeI2C(){
 			var totalmem = os.totalmem();
 			var freemem = os.freemem();
 			var usedmem = totalmem - freemem;
+			var pctmem = ((usedmem/totalmem)*100);
 			var avgcpu = os.loadavg();
-			console.log("Mem usage:" + ((usedmem/totalmem)*100) + "% " + " CPU[1]:" + avgcpu[0] + " CPU[5]:" + avgcpu[1] + " CPU[15]:" + avgcpu[2]);
+			console.log("Mem usage:" + pctmem + "% " + " CPU[1]:" + avgcpu[0] + " CPU[5]:" + avgcpu[1] + " CPU[15]:" + avgcpu[2]);
+			socket.emit('sensordata', 
+			{ 
+				cpu: avgcpu[0],
+				mem: pctmem
+			});
 		}else{
 			console.log("Error reading:" + err);
 		}
