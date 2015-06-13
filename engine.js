@@ -41,16 +41,21 @@ wire.scan(function(err, data) {
 	}
 });
 
-wire.write([6], function(err) {
-if(err){
-	console.log("Error writing:" + err);
-}
-});
+setInterval(leeI2C, 250);
 
-wire.read(1, function(err,res){
-	if(!err){
-		console.log(res);
-	}else{
-		console.log("Error reading:" + err);
+function leeI2C(){
+	/*
+	wire.write([6], function(err) {
+	if(err){
+		console.log("Error writing:" + err);
 	}
-});
+	});
+	*/
+	wire.read(1, function(err,res){
+		if(!err){
+			console.log(res);
+		}else{
+			console.log("Error reading:" + err);
+		}
+	});
+}
