@@ -10,6 +10,8 @@ var app = require('express')();
 var serveStatic = require('serve-static')
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
+// Os
+var os = require('os');
 
 redis.set('foo', 'bar');
 redis.get('foo', function (err, result) {
@@ -56,6 +58,9 @@ function leeI2C(){
 	wire.read(1, function(err,res){
 		if(!err){
 			console.log(res);
+			var totalmem = os.totalmem();
+			var freemem = os.freemem();
+			console.log("Total mem:" + totalmem + " Free mem:" + freemem);
 		}else{
 			console.log("Error reading:" + err);
 		}
