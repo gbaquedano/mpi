@@ -23,6 +23,8 @@ app.get('/', function (req, res) {
 });
 app.use('/scripts',serveStatic(__dirname + '/scripts'))
 app.use('/css',serveStatic(__dirname + '/css'))
+app.use('/fonts',serveStatic(__dirname + '/fonts'))
+app.use('/img',serveStatic(__dirname + '/img'))
 
 io.on('connection', function (socket) {
   console.log("Cliente conectado");
