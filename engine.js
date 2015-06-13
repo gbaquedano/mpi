@@ -41,7 +41,7 @@ wire.scan(function(err, data) {
 	}
 });
 
-setInterval(leeI2C, 500);
+setInterval(leeI2C, 1000);
 
 function leeI2C(){
 	/*
