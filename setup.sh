@@ -17,4 +17,6 @@ do
 	fi
 done
 
+echo "Starting redis..."
+redis-server redis.conf
 
