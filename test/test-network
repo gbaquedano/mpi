@@ -12,7 +12,7 @@ bus = dbus.SystemBus()
 manager = dbus.Interface(bus.get_object("org.bluez", "/"),
 						"org.bluez.Manager")
 						
-conn = manager.ActivateService('network')
+#conn = manager.ActivateService('network')
 
 network = dbus.Interface(bus.get_object(conn, '/org/bluez/network'), 'org.bluez.network.Manager')
 
