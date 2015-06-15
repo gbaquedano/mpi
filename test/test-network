@@ -11,6 +11,10 @@ bus = dbus.SystemBus()
 
 manager = dbus.Interface(bus.get_object("org.bluez", "/"),
 						"org.bluez.Manager")
+						
+conn = manager.ActivateService('network')
+
+network = dbus.Interface(bus.get_object(conn, '/org/bluez/network'), 'org.bluez.network.Manager')
 
 option_list = [
 		make_option("-i", "--device", action="store",
@@ -41,8 +45,8 @@ else:
 
 device = adapter.FindDevice(address)
 
-network = dbus.Interface(bus.get_object("org.bluez", device),
-						"org.bluez.Network")
+#network = dbus.Interface(bus.get_object("org.bluez", device), "org.bluez.Network")
+network = dbus.Interface(bus.get_object("org.bluez", network.FindServer('panu')), 'org.bluez.network.Server')
 
 iface = network.Connect(service)
 
