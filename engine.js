@@ -12,7 +12,6 @@ var address = 0x04;
 var wire = new i2c(address, {device: '/dev/i2c-1'});
 // Sentilo
 var token = 'c956c302086a042dd0426b4e62652273e05a6ce74d0b77f8b5602e0811025066';
-var token2 = '99424181b570801dee43b0a4ec6600e6b8f5c6a0378e7f7e95a42ec5ff3ffb22';
 var Client = require('node-rest-client').Client;
 var client = new Client();
 // Redis
