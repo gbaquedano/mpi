@@ -4,7 +4,7 @@ var failMsg = chalk.white('[' + chalk.red('FALLO') + ']');
 var okMsg = chalk.white('[' + chalk.green('OK') + ']');
 // Timezone
 var moment = require('moment-timezone');
-var localTime = moment().tz('Europe/Madrid').format('DD/MM/YYYYTHH:mm:ss');
+var localTime = function(){ return moment().tz('Europe/Madrid').format('DD/MM/YYYYTHH:mm:ss'); }
 // I2C
 var i2cinterval;
 var i2c = require('i2c');
@@ -148,13 +148,6 @@ wire.scan(function(err, data) {
 // Por un lado leer y por otro enviar a clientes
 
 function leeI2C(){
-	/*
-	wire.write([6], function(err) {
-	if(err){
-		console.log("Error writing:" + err);
-	}
-	});
-	*/
 	wire.read(23, function(err,res){
 	if(!err){
 			var buff = new Buffer(res);
