@@ -236,6 +236,22 @@ function leeI2C(){
 				//clearInterval(i2cinterval);
 				//connectToDefaultMac();
 			});
+
+			// Tests
+			var totalmem = os.totalmem();
+			var freemem = os.freemem();
+			var usedmem = totalmem - freemem;
+			var pctmem = ((usedmem/totalmem)*100);
+			var avgcpu = os.loadavg();
+
+			var dataPacket = {
+				cpu: avgcpu[0]*100,
+				mem: pctmem,
+				vel: 50,
+				bat: 10
+			};
+
+			sck_client.emit('sensordata', dataPacket);
 		}
 	});
 }
