@@ -168,7 +168,7 @@ function leeI2C(){
 			var ph1 = buff.readUInt8(21);
 			var ph2 = buff.readUInt8(22);
 			console.log('I2C:' + okMsg + ' Lat:' + lat + ' Lon:' + lon + ' Year:' + year + ' Month:' + mon + ' Day:' + day + ' Hour:' + hr + ' Min:' + min + ' Sec:' + sec +
-				' Vib:' + vib + ' Ace:' + ace + ' Vel:' + vel + ' Ind:' + ind + ' ph0:' + ph0 + ' ph1:' + ph1 + ' ph2:' + ph2);
+				' Vib:' + vib + ' Bat:' + bat + ' Ace:' + ace + ' Vel:' + vel + ' Ind:' + ind + ' ph0:' + ph0 + ' ph1:' + ph1 + ' ph2:' + ph2);
 			console.log(res);
 			var totalmem = os.totalmem();
 			var freemem = os.freemem();
