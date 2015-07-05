@@ -2,6 +2,56 @@
 var chalk = require('chalk');
 var failMsg = chalk.white('[' + chalk.red('FALLO') + ']');
 var okMsg = chalk.white('[' + chalk.green('OK') + ']');
+// GPIOs LED
+var gpio = require('gpio');
+var gpio17 = gpio.export(17, {
+	direction:'out',
+	interval:200,
+	ready:function(){
+		console.log('GPIO17 ' + okMsg);
+		gpio17.set(0);
+	}
+});
+var gpio27 = gpio.export(27, {
+	direction:'out',
+	interval:200,
+	ready:function(){
+		console.log('GPIO27 ' + okMsg);
+		gpio27.set(0);
+	}
+});
+var gpio22 = gpio.export(22, {
+	direction:'out',
+	interval:200,
+	ready:function(){
+		console.log('GPIO22 ' + okMsg);
+		gpio22.set(0);
+	}
+});
+var gpio10 = gpio.export(10, {
+	direction:'out',
+	interval:200,
+	ready:function(){
+		console.log('GPIO10 ' + okMsg);
+		gpio10.set(0);
+	}
+});
+var gpio09 = gpio.export(9, {
+	direction:'out',
+	interval:200,
+	ready:function(){
+		console.log('GPIO09 ' + okMsg);
+		gpio09.set(0);
+	}
+});
+var gpio11 = gpio.export(11, {
+	direction:'out',
+	interval:200,
+	ready:function(){
+		console.log('GPIO11 ' + okMsg);
+		gpio11.set(0);
+	}
+});
 // Timezone
 var moment = require('moment-timezone');
 var localTime = function(){ return moment().tz('Europe/Madrid').format('DD/MM/YYYYTHH:mm:ss'); }
