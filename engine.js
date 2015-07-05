@@ -105,7 +105,7 @@ function syncTime(){
 	exec('rdate ntp.xs4all.nl', function(err_t,stdout_t,stderr_t){
 		//console.log(err_t);
 		if(err_t == null){
-			console.log('Setting time ' + okMsg + ' ' + localTime);
+			console.log('Setting time ' + okMsg + ' ' + localTime());
 		}else{
 			console.log('Setting time ' + failMsg);
 		}
