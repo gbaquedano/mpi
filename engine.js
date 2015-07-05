@@ -9,7 +9,7 @@ var gpio17 = gpio.export(17, {
 	interval:200,
 	ready:function(){
 		console.log('GPIO17 ' + okMsg);
-		gpio17.set(0);
+		gpio17.set(1);
 	}
 });
 var gpio27 = gpio.export(27, {
@@ -17,7 +17,7 @@ var gpio27 = gpio.export(27, {
 	interval:200,
 	ready:function(){
 		console.log('GPIO27 ' + okMsg);
-		gpio27.set(0);
+		gpio27.set(1);
 	}
 });
 var gpio22 = gpio.export(22, {
@@ -25,7 +25,7 @@ var gpio22 = gpio.export(22, {
 	interval:200,
 	ready:function(){
 		console.log('GPIO22 ' + okMsg);
-		gpio22.set(0);
+		gpio22.set(1);
 	}
 });
 var gpio10 = gpio.export(10, {
@@ -33,7 +33,7 @@ var gpio10 = gpio.export(10, {
 	interval:200,
 	ready:function(){
 		console.log('GPIO10 ' + okMsg);
-		gpio10.set(0);
+		gpio10.set(1);
 	}
 });
 var gpio09 = gpio.export(9, {
@@ -41,7 +41,7 @@ var gpio09 = gpio.export(9, {
 	interval:200,
 	ready:function(){
 		console.log('GPIO09 ' + okMsg);
-		gpio09.set(0);
+		gpio09.set(1);
 	}
 });
 var gpio11 = gpio.export(11, {
@@ -49,7 +49,7 @@ var gpio11 = gpio.export(11, {
 	interval:200,
 	ready:function(){
 		console.log('GPIO11 ' + okMsg);
-		gpio11.set(0);
+		gpio11.set(1);
 	}
 });
 // Timezone
@@ -234,7 +234,7 @@ function leeI2C(){
 			var dataPacket = {
 				cpu: avgcpu[0]*100,
 				mem: pctmem,
-				vel: res[0],
+				vel: ace,
 				bat: res[1]
 			};
 			io.emit('sensordata', dataPacket);
