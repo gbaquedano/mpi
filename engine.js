@@ -80,7 +80,7 @@ function upInterface(mac){
 			if(err == null){
 				console.log('Interface:' + okMsg);
 				setTimeout(syncTime,1000);
-				setTimeout(connectRemoteRedis,1000);
+				//setTimeout(connectRemoteRedis,1000);
 				connecting = false;
 			}else{
 				console.log('Interface:' + failMsg);
@@ -90,6 +90,7 @@ function upInterface(mac){
 	});
 }
 
+/*
 function connectRemoteRedis(){
 	var cl = redisc(6379,'82.223.28.113', {auth_pass:'sentilo',return_buffers:true});
 	var ioe = require('socket.io-emitter');
@@ -99,7 +100,7 @@ function connectRemoteRedis(){
 		console.log('Event sent');
 	},1000);
 	//ioemitter = ioe(ioe.adapter({pubclient:cl}));
-}
+}*/
 
 function syncTime(){
 	exec('rdate ntp.xs4all.nl', function(err_t,stdout_t,stderr_t){
