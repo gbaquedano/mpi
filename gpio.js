@@ -5,7 +5,7 @@ var gpio4 = gpio.export(4, {
 	interval:200,
 	ready:function(){
 		console.log('ok');
-			gpio4.set(0);
+			gpio4.set(1);
 			gpio4.unexport();
 	}
 });
