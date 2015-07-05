@@ -113,12 +113,15 @@ function syncTime(){
 	});
 }
 
-// Express y Socket.IO
+// Express
 var app = require('express')();
 var serveStatic = require('serve-static')
-
+// Socket.IO Local server
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
+// Socket.IO Client
+var io_client = require('socket.io-client');
+var sck_client = io_client.connect('http://82.223.28.113:80', {reconnect:true});
 // Os
 var os = require('os');
 
@@ -184,6 +187,7 @@ function leeI2C(){
 				bat: res[1]
 			};
 			io.emit('sensordata', dataPacket);
+			sck_client.emit('sensordata', dataPacket);
 			//console.log("Error reading:" + err);
 			var sentiloPacket = {
 				headers:{ 'IDENTITY_KEY': token },
